@@ -19,10 +19,9 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        lilac: { DEFAULT: "hsl(var(--lilac))", deep: "hsl(var(--lilac-deep))" },
+        teal: { DEFAULT: "hsl(var(--teal))", deep: "hsl(var(--teal-deep))" },
         navy: "hsl(var(--navy))",
-        teal: "hsl(var(--teal))",
-        periwinkle: "hsl(var(--periwinkle))",
-        "light-gray": "hsl(var(--light-gray))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
