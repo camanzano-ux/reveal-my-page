@@ -1,5 +1,25 @@
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import {
+  Dna,
+  Microscope,
+  HeartPulse,
+  ShieldCheck,
+  Sparkles,
+  Award,
+  Users,
+  ArrowRight,
+  Menu,
+  X,
+  Mail,
+  Phone,
+  MapPin,
+  CheckCircle2,
+} from "lucide-react";
+import logo from "@/assets/logo-theraseq.jpeg";
+import heroDna from "@/assets/hero-dna.jpg";
+import labImg from "@/assets/lab.jpg";
+import familyImg from "@/assets/family.jpg";
 
 const Index = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -7,15 +27,14 @@ const Index = () => {
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
+    const onScroll = () => setScrolled(window.scrollY > 30);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const handleNav = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
-    const target = document.getElementById(id);
-    if (target) window.scrollTo({ top: target.offsetTop - 80, behavior: "smooth" });
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
     setMenuOpen(false);
   };
 
@@ -23,75 +42,105 @@ const Index = () => {
     e.preventDefault();
     setSubmitting(true);
     setTimeout(() => {
-      toast.success("Obrigado! Sua mensagem foi enviada com sucesso para a equipe TheraSeq.");
+      toast.success("Mensagem enviada! Nossa equipe entrará em contato em breve.");
       (e.target as HTMLFormElement).reset();
       setSubmitting(false);
-    }, 1500);
+    }, 1200);
   };
 
   const navLinks = [
-    { id: "home", label: "Início" },
+    { id: "sobre", label: "Sobre" },
     { id: "testes", label: "Testes PGTseq" },
     { id: "ciencia", label: "Ciência" },
-    { id: "medico", label: "Área Médica" },
+    { id: "pacientes", label: "Pacientes" },
+    { id: "contato", label: "Contato" },
+  ];
+
+  const tests = [
+    {
+      tag: "PGTseq-A",
+      title: "Aneuploidias",
+      desc: "O método mais validado de teste genético pré-implantacional para aneuploidia em pacientes em FIV — exclusivo TheraSeq.",
+      icon: Dna,
+    },
+    {
+      tag: "PGTseq-M",
+      title: "Doenças Monogênicas",
+      desc: "Teste genético único, personalizado para cada família, projetado para detectar alterações associadas a distúrbios de gene único.",
+      icon: HeartPulse,
+    },
+    {
+      tag: "PGTseq-SR",
+      title: "Rearranjos Estruturais",
+      desc: "Teste para indivíduos com rearranjo cromossômico — identifica material cromossômico extra ou ausente nas biópsias embrionárias.",
+      icon: Microscope,
+    },
+  ];
+
+  const stats = [
+    { value: "99.9%", label: "Precisão analítica" },
+    { value: "+50k", label: "Embriões analisados" },
+    { value: "200+", label: "Clínicas parceiras" },
+    { value: "24h", label: "Suporte clínico" },
+  ];
+
+  const differentials = [
+    { icon: Award, title: "Líder na América Latina", desc: "Tecnologia NGS de ponta com padrões internacionais." },
+    { icon: ShieldCheck, title: "Resultados confiáveis", desc: "Validação científica rigorosa e reprodutibilidade." },
+    { icon: Sparkles, title: "Inovação contínua", desc: "Pesquisa proprietária e algoritmos próprios." },
+    { icon: Users, title: "Suporte humanizado", desc: "Geneticistas seniores acompanhando cada caso." },
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans">
-      {/* Header */}
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      {/* HEADER */}
       <header
-        className={`fixed top-0 w-full z-50 bg-background transition-all ${
-          scrolled ? "py-2 shadow-[var(--shadow-header)] bg-background/95 backdrop-blur" : "py-5 shadow-[var(--shadow-header)]"
+        className={`fixed top-0 inset-x-0 z-50 transition-base ${
+          scrolled
+            ? "bg-background/85 backdrop-blur-xl shadow-soft py-3"
+            : "bg-transparent py-5"
         }`}
       >
-        <div className="container mx-auto px-5 flex justify-between items-center">
-          <a href="#home" onClick={(e) => handleNav(e, "home")} className="text-2xl text-navy">
-            <strong className="font-bold">Thera</strong>
-            <span className="font-normal text-teal">Seq</span>
+        <div className="container mx-auto px-6 flex items-center justify-between">
+          <a href="#home" onClick={(e) => handleNav(e, "home")} className="flex items-center gap-2">
+            <img src={logo} alt="TheraSeq" className="h-10 md:h-12 w-auto" />
           </a>
-          <nav className="hidden md:block">
-            <ul className="flex gap-8 items-center">
+          <nav className="hidden lg:flex items-center gap-8">
+            {navLinks.map((l) => (
+              <a
+                key={l.id}
+                href={`#${l.id}`}
+                onClick={(e) => handleNav(e, l.id)}
+                className="text-sm font-semibold text-foreground/80 hover:text-gradient transition-base"
+              >
+                {l.label}
+              </a>
+            ))}
+            <a
+              href="#contato"
+              onClick={(e) => handleNav(e, "contato")}
+              className="bg-gradient-brand-deep text-primary-foreground px-5 py-2.5 rounded-full font-semibold text-sm shadow-soft hover:shadow-glow hover:scale-105 transition-base"
+            >
+              Agendar Aconselhamento
+            </a>
+          </nav>
+          <button
+            aria-label="Menu"
+            className="lg:hidden p-2 rounded-full bg-muted"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+        {menuOpen && (
+          <nav className="lg:hidden bg-background/95 backdrop-blur-xl border-t border-border">
+            <ul className="container mx-auto px-6 py-6 flex flex-col gap-4">
               {navLinks.map((l) => (
                 <li key={l.id}>
                   <a
                     href={`#${l.id}`}
                     onClick={(e) => handleNav(e, l.id)}
-                    className="text-navy font-semibold text-sm hover:text-teal transition-colors"
-                  >
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-              <li>
-                <a
-                  href="#contato"
-                  onClick={(e) => handleNav(e, "contato")}
-                  className="bg-navy text-primary-foreground px-5 py-2.5 rounded font-semibold text-sm hover:bg-teal transition-colors"
-                >
-                  Contato
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <button
-            aria-label="Menu"
-            className="md:hidden flex flex-col gap-1.5"
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            <span className="w-6 h-0.5 bg-navy" />
-            <span className="w-6 h-0.5 bg-navy" />
-            <span className="w-6 h-0.5 bg-navy" />
-          </button>
-        </div>
-        {menuOpen && (
-          <nav className="md:hidden bg-background border-t border-border">
-            <ul className="flex flex-col p-5 gap-4">
-              {[...navLinks, { id: "contato", label: "Contato" }].map((l) => (
-                <li key={l.id}>
-                  <a
-                    href={`#${l.id}`}
-                    onClick={(e) => handleNav(e, l.id)}
-                    className="text-navy font-semibold"
+                    className="block py-2 font-semibold"
                   >
                     {l.label}
                   </a>
@@ -103,180 +152,395 @@ const Index = () => {
       </header>
 
       <main>
-        {/* Hero */}
+        {/* HERO */}
         <section
           id="home"
-          className="pt-44 pb-24 text-primary-foreground"
-          style={{ background: "var(--gradient-hero)" }}
+          className="relative min-h-screen flex items-center bg-gradient-hero text-white overflow-hidden pt-24"
         >
-          <div className="container mx-auto px-5">
-            <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-5">
-                Avançando a Ciência da Vida através da Genética
+          <div className="absolute inset-0 bg-gradient-glow opacity-60" />
+          <img
+            src={heroDna}
+            alt=""
+            className="absolute right-0 top-0 h-full w-full md:w-2/3 object-cover opacity-40 md:opacity-60 mix-blend-screen animate-float"
+            width={1280}
+            height={896}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/60 to-transparent" />
+
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="max-w-3xl animate-fade-up">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 mb-6">
+                <Sparkles className="h-4 w-4 text-teal" />
+                <span className="text-sm font-medium">Genética Reprodutiva de Última Geração</span>
+              </div>
+              <h1 className="text-5xl md:text-7xl font-extrabold leading-[1.05] mb-6">
+                Avançando a ciência de{" "}
+                <span className="bg-gradient-to-r from-lilac to-teal bg-clip-text text-transparent">
+                  formar famílias
+                </span>
               </h1>
-              <p className="text-lg opacity-90 mb-8">
-                A TheraSeq combina tecnologia de sequenciamento de última geração (NGS) com
-                suporte clínico especializado para transformar o futuro da medicina reprodutiva.
+              <p className="text-lg md:text-xl text-white/85 mb-10 max-w-2xl leading-relaxed">
+                A TheraSeq é o laboratório de análises genéticas do Mater Group, dedicado a profissionais
+                de saúde reprodutiva e seus pacientes — com tecnologia de sequenciamento de última
+                geração (NGS) e o mais alto padrão científico da América Latina.
               </p>
               <div className="flex flex-wrap gap-4">
                 <a
                   href="#testes"
                   onClick={(e) => handleNav(e, "testes")}
-                  className="bg-background text-navy px-7 py-3.5 rounded font-bold hover:opacity-90 transition"
+                  className="inline-flex items-center gap-2 bg-white text-navy px-7 py-4 rounded-full font-bold shadow-glow hover:scale-105 transition-base"
                 >
-                  Nossos Exames
+                  Conheça os exames PGTseq <ArrowRight className="h-5 w-5" />
                 </a>
                 <a
                   href="#ciencia"
                   onClick={(e) => handleNav(e, "ciencia")}
-                  className="border-2 border-background text-primary-foreground px-7 py-3 rounded font-bold hover:bg-background hover:text-navy transition"
+                  className="inline-flex items-center gap-2 border-2 border-white/40 text-white px-7 py-4 rounded-full font-bold hover:bg-white/10 transition-base"
                 >
-                  Conheça a Tecnologia
+                  Nossa tecnologia
                 </a>
+              </div>
+
+              {/* Stats */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+                {stats.map((s) => (
+                  <div key={s.label} className="border-l-2 border-teal/60 pl-4">
+                    <div className="text-3xl md:text-4xl font-extrabold text-gradient bg-gradient-to-r from-lilac to-teal bg-clip-text text-transparent">
+                      {s.value}
+                    </div>
+                    <div className="text-sm text-white/70 mt-1">{s.label}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </section>
 
-        {/* PGTseq */}
-        <section id="testes" className="py-24 bg-light-gray">
-          <div className="container mx-auto px-5">
-            <div className="text-center mb-14 max-w-2xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">Portfólio PGTseq™</h2>
-              <p className="text-muted-foreground">
-                Soluções avançadas em Teste Genético Pré-implantacional para clínicas e pacientes.
+        {/* SOBRE */}
+        <section id="sobre" className="py-24 md:py-32 bg-gradient-soft">
+          <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <span className="text-sm font-bold tracking-widest text-gradient uppercase">Sobre Nós</span>
+              <h2 className="text-4xl md:text-5xl font-extrabold mt-3 mb-6 text-navy">
+                Progresso na <span className="text-gradient">ciência reprodutiva</span>
+              </h2>
+              <p className="text-lg text-muted-foreground mb-5 leading-relaxed">
+                A TheraSeq é um laboratório de última geração especializado em testes genéticos
+                pré-implantacionais (PGT). Nossa missão é fornecer informação clinicamente útil,
+                baseada em evidências e da mais alta qualidade para pacientes em tratamento de
+                fertilidade.
               </p>
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                Como divisão de genética do Mater Group, somos dedicados a avançar o conhecimento
+                e melhorar resultados em pesquisa embrionária, diagnóstico e educação — oferecendo
+                os testes mais tecnologicamente avançados e precisos disponíveis.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {[
+                  "Tecnologia NGS proprietária",
+                  "Aconselhamento genético especializado",
+                  "Padrões internacionais de qualidade",
+                  "Parceria com clínicas em toda LatAm",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-teal-deep mt-0.5 shrink-0" />
+                    <span className="text-foreground/80 font-medium">{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="grid gap-8 md:grid-cols-3">
-              {[
-                {
-                  title: "PGT-A",
-                  bold: "Aneuploidias:",
-                  text: "Rastreamento cromossômico completo para aumentar as taxas de sucesso da fertilização in vitro e reduzir riscos de aborto.",
-                },
-                {
-                  title: "PGT-M",
-                  bold: "Doenças Monogênicas:",
-                  text: "Testes personalizados para casais com risco conhecido de transmitir condições genéticas específicas.",
-                },
-                {
-                  title: "PGT-SR",
-                  bold: "Rearranjos Estruturais:",
-                  text: "Identificação de desequilíbrios cromossômicos em portadores de translocações ou inversões.",
-                },
-              ].map((c) => (
-                <div
-                  key={c.title}
-                  className="bg-card p-10 rounded-lg shadow-[var(--shadow-card)] hover:-translate-y-2 transition-transform"
-                >
-                  <h3 className="text-teal text-xl font-bold mb-4">{c.title}</h3>
-                  <p>
-                    <strong className="text-navy">{c.bold}</strong> {c.text}
-                  </p>
+            <div className="relative">
+              <div className="absolute -inset-6 bg-gradient-brand opacity-20 blur-3xl rounded-full animate-pulse-glow" />
+              <img
+                src={labImg}
+                alt="Laboratório TheraSeq"
+                className="relative rounded-3xl shadow-glow w-full"
+                loading="lazy"
+                width={1024}
+                height={768}
+              />
+              <div className="absolute -bottom-6 -left-6 bg-background rounded-2xl shadow-card p-5 flex items-center gap-3">
+                <div className="bg-gradient-brand-deep p-3 rounded-xl">
+                  <Award className="h-6 w-6 text-white" />
                 </div>
-              ))}
+                <div>
+                  <div className="font-bold text-navy">Líder LatAm</div>
+                  <div className="text-xs text-muted-foreground">Em genética reprodutiva</div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Science */}
-        <section id="ciencia" className="py-24 bg-navy text-primary-foreground">
-          <div className="container mx-auto px-5 max-w-3xl">
-            <h2 className="text-3xl md:text-4xl font-bold mb-5">Inovação em Sequenciamento (NGS)</h2>
-            <p className="text-lg opacity-90 mb-6">
-              Nossa plataforma utiliza algoritmos proprietários e tecnologia de ponta para fornecer
-              resultados com precisão superior a 99,9%. Na TheraSeq, a ciência não é apenas um
-              processo, é o nosso compromisso com a vida.
-            </p>
-            <ul className="space-y-3">
-              {[
-                "Resolução ultra-alta para detecção de mosaicismo.",
-                "Relatórios clínicos claros e acionáveis.",
-                "Suporte direto de geneticistas seniores.",
-              ].map((f) => (
-                <li key={f} className="flex gap-3 items-start">
-                  <span className="text-periwinkle mt-1">●</span>
-                  <span>{f}</span>
-                </li>
-              ))}
-            </ul>
+        {/* TESTES */}
+        <section id="testes" className="py-24 md:py-32 relative">
+          <div className="absolute inset-0 bg-gradient-glow opacity-30 pointer-events-none" />
+          <div className="container mx-auto px-6 relative">
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <span className="text-sm font-bold tracking-widest text-gradient uppercase">Exames & Testes</span>
+              <h2 className="text-4xl md:text-5xl font-extrabold mt-3 mb-5 text-navy">
+                Testes pré-implantacionais para{" "}
+                <span className="text-gradient">decisões informadas</span>
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Soluções avançadas em PGT para clínicas de reprodução assistida e suas pacientes.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {tests.map((t, i) => {
+                const Icon = t.icon;
+                return (
+                  <div
+                    key={t.tag}
+                    className="group relative bg-card rounded-3xl p-8 shadow-card hover:shadow-glow transition-base hover:-translate-y-2 border border-border/50 overflow-hidden"
+                    style={{ animationDelay: `${i * 0.1}s` }}
+                  >
+                    <div className="absolute -top-12 -right-12 w-40 h-40 bg-gradient-brand rounded-full opacity-10 group-hover:opacity-20 transition-base" />
+                    <div className="relative">
+                      <div className="inline-flex p-4 rounded-2xl bg-gradient-brand-deep mb-6 shadow-soft">
+                        <Icon className="h-7 w-7 text-white" />
+                      </div>
+                      <div className="text-xs font-bold tracking-widest text-teal-deep mb-2">
+                        {t.tag}
+                      </div>
+                      <h3 className="text-2xl font-bold text-navy mb-3">{t.title}</h3>
+                      <p className="text-muted-foreground leading-relaxed mb-6">{t.desc}</p>
+                      <a
+                        href="#contato"
+                        onClick={(e) => handleNav(e, "contato")}
+                        className="inline-flex items-center gap-2 font-semibold text-gradient hover:gap-3 transition-base"
+                      >
+                        Saber mais <ArrowRight className="h-4 w-4 text-teal-deep" />
+                      </a>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </section>
 
-        {/* Medical */}
-        <section id="medico" className="py-24 bg-light-gray">
-          <div className="container mx-auto px-5">
-            <div className="bg-card p-12 rounded-lg shadow-[var(--shadow-card)] text-center max-w-3xl mx-auto">
-              <h2 className="text-3xl font-bold text-navy mb-4">Suporte Clínico e Parcerias</h2>
-              <p className="text-muted-foreground mb-6">
-                Oferecemos suporte integral para clínicas de reprodução assistida, desde a logística
-                de biópsia até o aconselhamento genético pós-resultado.
+        {/* CIENCIA */}
+        <section id="ciencia" className="py-24 md:py-32 bg-navy text-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-glow opacity-40" />
+          <div className="container mx-auto px-6 relative">
+            <div className="max-w-3xl mx-auto text-center mb-16">
+              <span className="text-sm font-bold tracking-widest bg-gradient-to-r from-lilac to-teal bg-clip-text text-transparent uppercase">
+                Ciência & Tecnologia
+              </span>
+              <h2 className="text-4xl md:text-5xl font-extrabold mt-3 mb-6">
+                Inovação em{" "}
+                <span className="bg-gradient-to-r from-lilac to-teal bg-clip-text text-transparent">
+                  Sequenciamento (NGS)
+                </span>
+              </h2>
+              <p className="text-lg text-white/75 leading-relaxed">
+                Nossa plataforma utiliza algoritmos proprietários e tecnologia de ponta para fornecer
+                resultados com precisão superior a 99,9%. Na TheraSeq, ciência é compromisso com a vida.
               </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {differentials.map((d) => {
+                const Icon = d.icon;
+                return (
+                  <div
+                    key={d.title}
+                    className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-teal/40 transition-base"
+                  >
+                    <div className="inline-flex p-3 rounded-xl bg-gradient-brand mb-4">
+                      <Icon className="h-6 w-6 text-white" />
+                    </div>
+                    <h3 className="font-bold text-lg mb-2">{d.title}</h3>
+                    <p className="text-sm text-white/70 leading-relaxed">{d.desc}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* PACIENTES */}
+        <section id="pacientes" className="py-24 md:py-32 bg-gradient-soft">
+          <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+            <div className="relative order-2 lg:order-1">
+              <div className="absolute -inset-6 bg-gradient-brand opacity-20 blur-3xl rounded-full" />
+              <img
+                src={familyImg}
+                alt="Família"
+                className="relative rounded-3xl shadow-glow w-full"
+                loading="lazy"
+                width={1024}
+                height={768}
+              />
+            </div>
+            <div className="order-1 lg:order-2">
+              <span className="text-sm font-bold tracking-widest text-gradient uppercase">
+                Atendimento a Pacientes
+              </span>
+              <h2 className="text-4xl md:text-5xl font-extrabold mt-3 mb-6 text-navy">
+                Suporte completo para{" "}
+                <span className="text-gradient">cada família</span>
+              </h2>
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                Oferecemos suporte integral para clínicas de reprodução assistida e suas pacientes,
+                desde a logística da biópsia até o aconselhamento genético pós-resultado.
+              </p>
+              <div className="space-y-4 mb-8">
+                {[
+                  { t: "Aconselhamento genético", d: "Sessões com geneticistas seniores antes e após o exame." },
+                  { t: "Logística de biópsia", d: "Cadeia de transporte segura, rastreável e validada." },
+                  { t: "Relatórios clínicos claros", d: "Resultados acionáveis para decisões clínicas." },
+                ].map((s) => (
+                  <div key={s.t} className="flex gap-4 p-4 bg-card rounded-2xl shadow-card">
+                    <CheckCircle2 className="h-6 w-6 text-teal-deep shrink-0 mt-0.5" />
+                    <div>
+                      <div className="font-bold text-navy">{s.t}</div>
+                      <div className="text-sm text-muted-foreground">{s.d}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
               <a
                 href="#contato"
                 onClick={(e) => handleNav(e, "contato")}
-                className="inline-block bg-navy text-primary-foreground px-7 py-3.5 rounded font-bold hover:bg-teal transition"
+                className="inline-flex items-center gap-2 bg-gradient-brand-deep text-white px-7 py-4 rounded-full font-bold shadow-soft hover:shadow-glow hover:scale-105 transition-base"
               >
-                Portal do Médico
+                Agendar Aconselhamento Genético <ArrowRight className="h-5 w-5" />
               </a>
             </div>
           </div>
         </section>
 
-        {/* Contact */}
-        <section id="contato" className="py-24">
-          <div className="container mx-auto px-5">
-            <div className="grid md:grid-cols-2 gap-12">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">Fale Conosco</h2>
-                <p className="text-muted-foreground mb-6">
-                  Dúvidas sobre exames ou parcerias? Nossa equipe técnica está à disposição.
-                </p>
-                <p className="mb-2"><strong className="text-navy">Email:</strong> contato@theraseq.com.br</p>
-                <p><strong className="text-navy">Telefone:</strong> (11) 4000-0000</p>
-              </div>
-              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                <input
-                  type="text"
-                  placeholder="Nome Completo"
-                  required
-                  className="p-4 border border-border rounded focus:outline-none focus:border-teal"
-                />
-                <input
-                  type="email"
-                  placeholder="E-mail Profissional"
-                  required
-                  className="p-4 border border-border rounded focus:outline-none focus:border-teal"
-                />
-                <textarea
-                  placeholder="Como podemos ajudar?"
-                  rows={5}
-                  required
-                  className="p-4 border border-border rounded focus:outline-none focus:border-teal"
-                />
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className="bg-navy text-primary-foreground p-4 font-bold rounded hover:bg-teal transition disabled:opacity-60"
+        {/* CONTATO */}
+        <section id="contato" className="py-24 md:py-32 bg-background">
+          <div className="container mx-auto px-6">
+            <div className="bg-gradient-hero rounded-3xl overflow-hidden shadow-glow relative">
+              <div className="absolute inset-0 bg-gradient-glow opacity-50" />
+              <div className="grid lg:grid-cols-2 relative">
+                <div className="p-10 md:p-14 text-white">
+                  <span className="text-sm font-bold tracking-widest text-teal uppercase">Fale Conosco</span>
+                  <h2 className="text-4xl md:text-5xl font-extrabold mt-3 mb-6">
+                    Vamos construir o futuro da{" "}
+                    <span className="bg-gradient-to-r from-lilac to-teal bg-clip-text text-transparent">
+                      genética reprodutiva
+                    </span>{" "}
+                    juntos
+                  </h2>
+                  <p className="text-white/80 mb-10 text-lg">
+                    Dúvidas sobre nossos exames ou interesse em parcerias? Nossa equipe técnica está à
+                    disposição.
+                  </p>
+                  <div className="space-y-5">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 rounded-xl bg-white/10 backdrop-blur">
+                        <Mail className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <div className="text-xs text-white/60 uppercase tracking-widest">Email</div>
+                        <div className="font-semibold">contato@theraseq.com.br</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 rounded-xl bg-white/10 backdrop-blur">
+                        <Phone className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <div className="text-xs text-white/60 uppercase tracking-widest">Telefone</div>
+                        <div className="font-semibold">+55 (11) 4000-0000</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 rounded-xl bg-white/10 backdrop-blur">
+                        <MapPin className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <div className="text-xs text-white/60 uppercase tracking-widest">Endereço</div>
+                        <div className="font-semibold">Mater Group — São Paulo, Brasil</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <form
+                  onSubmit={handleSubmit}
+                  className="bg-background m-3 lg:m-6 rounded-2xl p-8 md:p-10 flex flex-col gap-4"
                 >
-                  {submitting ? "Enviando..." : "Enviar Mensagem"}
-                </button>
-              </form>
+                  <h3 className="text-2xl font-bold text-navy mb-2">Envie uma mensagem</h3>
+                  <input
+                    required
+                    type="text"
+                    placeholder="Nome completo"
+                    className="w-full p-4 bg-muted rounded-xl border border-transparent focus:border-primary focus:outline-none transition-base"
+                  />
+                  <input
+                    required
+                    type="email"
+                    placeholder="E-mail profissional"
+                    className="w-full p-4 bg-muted rounded-xl border border-transparent focus:border-primary focus:outline-none transition-base"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Clínica / Instituição"
+                    className="w-full p-4 bg-muted rounded-xl border border-transparent focus:border-primary focus:outline-none transition-base"
+                  />
+                  <textarea
+                    required
+                    rows={4}
+                    placeholder="Como podemos ajudar?"
+                    className="w-full p-4 bg-muted rounded-xl border border-transparent focus:border-primary focus:outline-none transition-base resize-none"
+                  />
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="bg-gradient-brand-deep text-white p-4 rounded-xl font-bold shadow-soft hover:shadow-glow hover:scale-[1.02] transition-base disabled:opacity-60"
+                  >
+                    {submitting ? "Enviando..." : "Enviar Mensagem"}
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="bg-navy text-primary-foreground py-8">
-        <div className="container mx-auto px-5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm opacity-80">
-            © 2026 TheraSeq - Divisão de Genética Mater Group. Todos os direitos reservados.
-          </p>
-          <nav className="flex gap-6 text-sm">
-            <a href="#" className="hover:text-periwinkle transition">Privacidade</a>
-            <a href="#" className="hover:text-periwinkle transition">Termos de Uso</a>
-            <a href="#" className="hover:text-periwinkle transition">LGPD</a>
-          </nav>
+      {/* FOOTER */}
+      <footer className="bg-navy text-white/80 pt-16 pb-8">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-4 gap-10 mb-12">
+            <div className="md:col-span-2">
+              <img src={logo} alt="TheraSeq" className="h-12 w-auto mb-4 brightness-0 invert" />
+              <p className="text-sm leading-relaxed max-w-md">
+                Laboratório de análises genéticas do Mater Group. Avançando a ciência da vida com
+                tecnologia NGS de última geração.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-bold text-white mb-4">Exames</h4>
+              <ul className="space-y-2 text-sm">
+                <li><a href="#testes" className="hover:text-teal transition-base">PGTseq-A</a></li>
+                <li><a href="#testes" className="hover:text-teal transition-base">PGTseq-M</a></li>
+                <li><a href="#testes" className="hover:text-teal transition-base">PGTseq-SR</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-white mb-4">Institucional</h4>
+              <ul className="space-y-2 text-sm">
+                <li><a href="#sobre" className="hover:text-teal transition-base">Sobre</a></li>
+                <li><a href="#ciencia" className="hover:text-teal transition-base">Ciência</a></li>
+                <li><a href="#contato" className="hover:text-teal transition-base">Contato</a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/60">
+            <p>© 2026 TheraSeq — Divisão de Genética Mater Group. Todos os direitos reservados.</p>
+            <div className="flex gap-6">
+              <a href="#" className="hover:text-teal transition-base">Privacidade</a>
+              <a href="#" className="hover:text-teal transition-base">Termos de Uso</a>
+              <a href="#" className="hover:text-teal transition-base">LGPD</a>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
