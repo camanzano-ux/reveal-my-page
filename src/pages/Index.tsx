@@ -103,7 +103,7 @@ const Index = () => {
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           <a href="#home" onClick={(e) => handleNav(e, "home")} className="flex items-center gap-2">
-            <img src={logo} alt="TheraSeq" className="h-16 md:h-20 w-auto mix-blend-multiply" />
+            <img src={logo} alt="TheraSeq" className="h-12 md:h-16 w-auto drop-shadow-md" />
           </a>
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((l) => (
@@ -171,17 +171,11 @@ const Index = () => {
 
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-3xl animate-fade-up">
-              <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-md border border-white/60 rounded-full px-4 py-2 mb-8 shadow-soft">
+              <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-md border border-white/60 rounded-full px-4 py-2 mb-6 shadow-soft">
                 <Sparkles className="h-4 w-4 text-teal-deep" />
-                <span className="text-sm font-semibold text-navy">Available in LATAM by</span>
+                <span className="text-sm font-semibold text-navy">Available in LATAM by TheraSeq</span>
               </div>
-              {/* Logo grande integrado ao fundo */}
-              <img
-                src={logo}
-                alt="TheraSeq"
-                className="w-full max-w-2xl h-auto mb-8 mix-blend-multiply -ml-2"
-              />
-              <h1 className="text-3xl md:text-5xl font-extrabold leading-[1.1] mb-6 text-navy">
+              <h1 className="text-5xl md:text-7xl font-extrabold leading-[1.02] mb-6 text-navy">
                 Avançando a ciência de{" "}
                 <span className="text-gradient">formar famílias</span>
               </h1>
