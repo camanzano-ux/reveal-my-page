@@ -16,8 +16,8 @@ import {
   MapPin,
   CheckCircle2,
 } from "lucide-react";
-import logo from "@/assets/logo-theraseq.jpeg";
-import heroDna from "@/assets/hero-dna.jpg";
+import logo from "@/assets/logo-theraseq.png";
+import heroDna from "@/assets/hero-banner.jpg";
 import labImg from "@/assets/lab.jpg";
 import familyImg from "@/assets/family.jpg";
 
@@ -97,13 +97,13 @@ const Index = () => {
       <header
         className={`fixed top-0 inset-x-0 z-50 transition-base ${
           scrolled
-            ? "bg-background/85 backdrop-blur-xl shadow-soft py-3"
-            : "bg-transparent py-5"
+            ? "bg-white/80 backdrop-blur-xl shadow-soft py-2"
+            : "bg-white/40 backdrop-blur-md py-3"
         }`}
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           <a href="#home" onClick={(e) => handleNav(e, "home")} className="flex items-center gap-2">
-            <img src={logo} alt="TheraSeq" className="h-10 md:h-12 w-auto" />
+            <img src={logo} alt="TheraSeq" className="h-12 md:h-16 w-auto drop-shadow-md" />
           </a>
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((l) => (
@@ -111,7 +111,7 @@ const Index = () => {
                 key={l.id}
                 href={`#${l.id}`}
                 onClick={(e) => handleNav(e, l.id)}
-                className="text-sm font-semibold text-foreground/80 hover:text-gradient transition-base"
+                className="text-sm font-semibold text-navy/80 hover:text-gradient transition-base"
               >
                 {l.label}
               </a>
@@ -126,7 +126,7 @@ const Index = () => {
           </nav>
           <button
             aria-label="Menu"
-            className="lg:hidden p-2 rounded-full bg-muted"
+            className="lg:hidden p-2 rounded-full bg-white/70 text-navy"
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -155,31 +155,31 @@ const Index = () => {
         {/* HERO */}
         <section
           id="home"
-          className="relative min-h-screen flex items-center bg-gradient-hero text-white overflow-hidden pt-24"
+          className="relative min-h-screen flex items-center text-navy overflow-hidden pt-28"
         >
-          <div className="absolute inset-0 bg-gradient-glow opacity-60" />
+          {/* Ethereal background image (banner style) */}
           <img
             src={heroDna}
             alt=""
-            className="absolute right-0 top-0 h-full w-full md:w-2/3 object-cover opacity-40 md:opacity-60 mix-blend-screen animate-float"
-            width={1280}
-            height={896}
+            className="absolute inset-0 h-full w-full object-cover"
+            width={1920}
+            height={1280}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/60 to-transparent" />
+          {/* Soft white gradient to keep text readable on the left */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/85 via-white/55 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-glow opacity-40 mix-blend-overlay" />
 
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-3xl animate-fade-up">
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 mb-6">
-                <Sparkles className="h-4 w-4 text-teal" />
-                <span className="text-sm font-medium">Genética Reprodutiva de Última Geração</span>
+              <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-md border border-white/60 rounded-full px-4 py-2 mb-6 shadow-soft">
+                <Sparkles className="h-4 w-4 text-teal-deep" />
+                <span className="text-sm font-semibold text-navy">Available in LATAM by TheraSeq</span>
               </div>
-              <h1 className="text-5xl md:text-7xl font-extrabold leading-[1.05] mb-6">
+              <h1 className="text-5xl md:text-7xl font-extrabold leading-[1.02] mb-6 text-navy">
                 Avançando a ciência de{" "}
-                <span className="bg-gradient-to-r from-lilac to-teal bg-clip-text text-transparent">
-                  formar famílias
-                </span>
+                <span className="text-gradient">formar famílias</span>
               </h1>
-              <p className="text-lg md:text-xl text-white/85 mb-10 max-w-2xl leading-relaxed">
+              <p className="text-lg md:text-xl text-navy/75 mb-10 max-w-2xl leading-relaxed">
                 A TheraSeq é o laboratório de análises genéticas do Mater Group, dedicado a profissionais
                 de saúde reprodutiva e seus pacientes — com tecnologia de sequenciamento de última
                 geração (NGS) e o mais alto padrão científico da América Latina.
@@ -188,14 +188,14 @@ const Index = () => {
                 <a
                   href="#testes"
                   onClick={(e) => handleNav(e, "testes")}
-                  className="inline-flex items-center gap-2 bg-white text-navy px-7 py-4 rounded-full font-bold shadow-glow hover:scale-105 transition-base"
+                  className="inline-flex items-center gap-2 bg-gradient-brand-deep text-white px-7 py-4 rounded-full font-bold shadow-glow hover:scale-105 transition-base"
                 >
                   Conheça os exames PGTseq <ArrowRight className="h-5 w-5" />
                 </a>
                 <a
                   href="#ciencia"
                   onClick={(e) => handleNav(e, "ciencia")}
-                  className="inline-flex items-center gap-2 border-2 border-white/40 text-white px-7 py-4 rounded-full font-bold hover:bg-white/10 transition-base"
+                  className="inline-flex items-center gap-2 border-2 border-navy/20 bg-white/60 backdrop-blur text-navy px-7 py-4 rounded-full font-bold hover:bg-white transition-base"
                 >
                   Nossa tecnologia
                 </a>
@@ -204,11 +204,11 @@ const Index = () => {
               {/* Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
                 {stats.map((s) => (
-                  <div key={s.label} className="border-l-2 border-teal/60 pl-4">
-                    <div className="text-3xl md:text-4xl font-extrabold text-gradient bg-gradient-to-r from-lilac to-teal bg-clip-text text-transparent">
+                  <div key={s.label} className="border-l-2 border-teal-deep/40 pl-4">
+                    <div className="text-3xl md:text-4xl font-extrabold text-gradient">
                       {s.value}
                     </div>
-                    <div className="text-sm text-white/70 mt-1">{s.label}</div>
+                    <div className="text-sm text-navy/65 mt-1 font-medium">{s.label}</div>
                   </div>
                 ))}
               </div>
@@ -439,7 +439,9 @@ const Index = () => {
                       </div>
                       <div>
                         <div className="text-xs text-white/60 uppercase tracking-widest">Email</div>
-                        <div className="font-semibold">contato@theraseq.com.br</div>
+                        <a href="mailto:laboratorio@theraseq.com.br" className="font-semibold hover:text-teal transition-base">
+                          laboratorio@theraseq.com.br
+                        </a>
                       </div>
                     </div>
                     <div className="flex items-center gap-4">
@@ -448,16 +450,22 @@ const Index = () => {
                       </div>
                       <div>
                         <div className="text-xs text-white/60 uppercase tracking-widest">Telefone</div>
-                        <div className="font-semibold">+55 (11) 4000-0000</div>
+                        <a href="tel:+551150565901" className="font-semibold hover:text-teal transition-base">
+                          +55 (11) 5056-5901
+                        </a>
                       </div>
                     </div>
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-start gap-4">
                       <div className="p-3 rounded-xl bg-white/10 backdrop-blur">
                         <MapPin className="h-5 w-5" />
                       </div>
                       <div>
                         <div className="text-xs text-white/60 uppercase tracking-widest">Endereço</div>
-                        <div className="font-semibold">Mater Group — São Paulo, Brasil</div>
+                        <div className="font-semibold leading-snug">
+                          Av. Ibirapuera, 2315 — 1º Andar<br />
+                          Moema, São Paulo — SP<br />
+                          CEP: 04029-200
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -510,7 +518,7 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-10 mb-12">
             <div className="md:col-span-2">
-              <img src={logo} alt="TheraSeq" className="h-12 w-auto mb-4 brightness-0 invert" />
+              <img src={logo} alt="TheraSeq" className="h-16 w-auto mb-4" />
               <p className="text-sm leading-relaxed max-w-md">
                 Laboratório de análises genéticas do Mater Group. Avançando a ciência da vida com
                 tecnologia NGS de última geração.
