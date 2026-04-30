@@ -16,7 +16,7 @@ import {
   MapPin,
   CheckCircle2,
 } from "lucide-react";
-import logo from "@/assets/logo-theraseq-full.png";
+import logo from "@/assets/logo-theraseq.png";
 import heroDna from "@/assets/hero-banner.jpg";
 import labImg from "@/assets/lab.jpg";
 import familyImg from "@/assets/family.jpg";
@@ -103,7 +103,7 @@ const Index = () => {
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           <a href="#home" onClick={(e) => handleNav(e, "home")} className="flex items-center gap-2">
-            <img src={logo} alt="TheraSeq" className="h-12 md:h-14 w-auto" />
+            <img src={logo} alt="TheraSeq" className="h-16 md:h-20 w-auto mix-blend-multiply" />
           </a>
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((l) => (
@@ -157,26 +157,29 @@ const Index = () => {
           id="home"
           className="relative min-h-screen flex items-center text-navy overflow-hidden pt-28"
         >
-          {/* Fundo verde-claro vibrante (mint → teal) integrado à identidade */}
-          <div className="absolute inset-0 bg-gradient-mint" />
-          <div className="absolute inset-0 bg-gradient-mint-glow animate-pulse-glow" />
-          {/* Orbs decorativos */}
-          <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-teal/40 blur-3xl animate-float" />
-          <div className="absolute bottom-0 right-0 h-[28rem] w-[28rem] rounded-full bg-lilac/30 blur-3xl animate-float" style={{ animationDelay: "2s" }} />
-          {/* Suaviza a leitura do texto à esquerda */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-white/10 to-transparent" />
+          {/* Ethereal background image (banner style) */}
+          <img
+            src={heroDna}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover"
+            width={1920}
+            height={1280}
+          />
+          {/* Soft white gradient to keep text readable on the left */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/85 via-white/55 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-glow opacity-40 mix-blend-overlay" />
 
           <div className="container mx-auto px-6 relative z-10">
-            <div className="max-w-4xl animate-fade-up">
-              <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-md border border-white/70 rounded-full px-4 py-2 mb-10 shadow-soft">
+            <div className="max-w-3xl animate-fade-up">
+              <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-md border border-white/60 rounded-full px-4 py-2 mb-8 shadow-soft">
                 <Sparkles className="h-4 w-4 text-teal-deep" />
-                <span className="text-sm font-semibold text-navy">Available in LATAM by Mater Group</span>
+                <span className="text-sm font-semibold text-navy">Available in LATAM by</span>
               </div>
-              {/* Logo grande, vibrante, integrado ao fundo verde */}
+              {/* Logo grande integrado ao fundo */}
               <img
                 src={logo}
                 alt="TheraSeq"
-                className="w-full max-w-3xl lg:max-w-4xl h-auto mb-10 drop-shadow-[0_8px_30px_rgba(80,180,170,0.35)]"
+                className="w-full max-w-2xl h-auto mb-8 mix-blend-multiply -ml-2"
               />
               <h1 className="text-3xl md:text-5xl font-extrabold leading-[1.1] mb-6 text-navy">
                 Avançando a ciência de{" "}
