@@ -16,7 +16,8 @@ import {
   MapPin,
   CheckCircle2,
 } from "lucide-react";
-import logo from "@/assets/logo-theraseq.png";
+import logoV1 from "@/assets/logo-v1.png";
+import logoV2 from "@/assets/logo-v2.png";
 import heroDna from "@/assets/hero-banner.jpg";
 import labImg from "@/assets/lab.jpg";
 import familyImg from "@/assets/family.jpg";
