@@ -104,7 +104,7 @@ const Index = () => {
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           <a href="#home" onClick={(e) => handleNav(e, "home")} className="flex items-center gap-2">
-            <img src={logo} alt="TheraSeq" className="h-12 md:h-16 w-auto drop-shadow-md" />
+            <img src={logoV1} alt="TheraSeq" className="h-12 md:h-16 w-auto drop-shadow-md" />
           </a>
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((l) => (
@@ -519,7 +519,7 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-10 mb-12">
             <div className="md:col-span-2">
-              <img src={logo} alt="TheraSeq" className="h-16 w-auto mb-4" />
+              <img src={logoV2} alt="TheraSeq" className="h-16 w-auto mb-4" />
               <p className="text-sm leading-relaxed max-w-md">
                 Laboratório de análises genéticas do Mater Group. Avançando a ciência da vida com
                 tecnologia NGS de última geração.
