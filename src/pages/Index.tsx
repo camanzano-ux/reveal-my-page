@@ -80,7 +80,7 @@ const Index = () => {
 
   const stats = [
     { value: "99.9%", label: "Precisão analítica" },
-    { value: "+50k", label: "Embriões analisados" },
+    { value: "+50k", label: "Embriões analiados" },
     { value: "200+", label: "Clínicas parceiras" },
     { value: "24h", label: "Suporte clínico" },
   ];
@@ -174,16 +174,14 @@ const Index = () => {
             <div className="max-w-3xl animate-fade-up">
               <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-md border border-white/60 rounded-full px-4 py-2 mb-6 shadow-soft">
                 <Sparkles className="h-4 w-4 text-teal-deep" />
-                <span className="text-sm font-semibold text-navy">Available in LATAM by TheraSeq</span>
+                <span className="text-sm font-semibold text-navy">Juno Genetics Available in LATAM by TheraSeq</span>
               </div>
               <h1 className="text-5xl md:text-7xl font-extrabold leading-[1.02] mb-6 text-navy">
                 Avançando a ciência de{" "}
                 <span className="text-gradient">formar famílias</span>
               </h1>
-              <p className="text-lg md:text-xl text-navy/75 mb-10 max-w-2xl leading-relaxed">
-                A TheraSeq é o laboratório de análises genéticas do Mater Group, dedicado a profissionais
-                de saúde reprodutiva e seus pacientes — com tecnologia de sequenciamento de última
-                geração (NGS) e o mais alto padrão científico da América Latina.
+              <p className="text-lg md:text-xl text-navy/75 mb-10 max-w-2xl leading-relaxed whitespace-pre-line">
+                A TheraSeq é um laboratório de análises genéticas dedicado a&nbsp; clínicas e laboratórios de saúde reprodutiva e seus pacientes — com tecnologia de sequenciamento de última geração (NGS) e o mais alto padrão da América Latina, além de utilizar uma das únicas plataformas{"\n"}com validação analítica e clínica (Juno Genetics).
               </p>
               <div className="flex flex-wrap gap-4">
                 <a
@@ -225,23 +223,21 @@ const Index = () => {
               <h2 className="text-4xl md:text-5xl font-extrabold mt-3 mb-6 text-navy">
                 Progresso na <span className="text-gradient">ciência reprodutiva</span>
               </h2>
-              <p className="text-lg text-muted-foreground mb-5 leading-relaxed">
-                A TheraSeq é um laboratório de última geração especializado em testes genéticos
-                pré-implantacionais (PGT). Nossa missão é fornecer informação clinicamente útil,
-                baseada em evidências e da mais alta qualidade para pacientes em tratamento de
-                fertilidade.
+              <p className="text-lg text-muted-foreground mb-5 leading-relaxed whitespace-pre-line">
+                Thera: Arquétipo da cura, cuidado e proteção.{"\n"}
+                Seq: Linguagem do sequenciamento e tecnologia{"\n\n"}
+                TheraSeq é a ponte entre o invisível e o possível.&nbsp;{"\n"}
+                É onde o rigor científico convive com a sensibilidade de quem entende que cada embrião carrega não apenas cromossomos, mas expectativas, histórias e futuros inteiros.
               </p>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Como divisão de genética do Mater Group, somos dedicados a avançar o conhecimento
-                e melhorar resultados em pesquisa embrionária, diagnóstico e educação — oferecendo
-                os testes mais tecnologicamente avançados e precisos disponíveis.
+                Mais do que um nome, TheraSeq é um propósito: cuidado e ciência, coração e código, entrelaçados em um caminho preciso do embrião à vida.
               </p>
               <div className="grid sm:grid-cols-2 gap-4">
                 {[
                   "Tecnologia NGS proprietária",
                   "Aconselhamento genético especializado",
                   "Padrões internacionais de qualidade",
-                  "Parceria com clínicas em toda LatAm",
+                  "Parceria com clínicas em toda Latam",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-teal-deep mt-0.5 shrink-0" />
@@ -265,7 +261,7 @@ const Index = () => {
                   <Award className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <div className="font-bold text-navy">Líder LatAm</div>
+                  <div className="font-bold text-navy">Líder Latam</div>
                   <div className="text-xs text-muted-foreground">Em genética reprodutiva</div>
                 </div>
               </div>
@@ -390,7 +386,7 @@ const Index = () => {
               </p>
               <div className="space-y-4 mb-8">
                 {[
-                  { t: "Aconselhamento genético", d: "Sessões com geneticistas seniores antes e após o exame." },
+                  { t: "Aconselhamento genético", d: "Parceria com geneticistas seniores para suporte antes e após o exame, quando pertinente e indicado." },
                   { t: "Logística de biópsia", d: "Cadeia de transporte segura, rastreável e validada." },
                   { t: "Relatórios clínicos claros", d: "Resultados acionáveis para decisões clínicas." },
                 ].map((s) => (
@@ -408,7 +404,7 @@ const Index = () => {
                 onClick={(e) => handleNav(e, "contato")}
                 className="inline-flex items-center gap-2 bg-gradient-brand-deep text-white px-7 py-4 rounded-full font-bold shadow-soft hover:shadow-glow hover:scale-105 transition-base"
               >
-                Agendar Aconselhamento Genético <ArrowRight className="h-5 w-5" />
+                Entre em contato conosco <ArrowRight className="h-5 w-5" />
               </a>
             </div>
           </div>
@@ -429,9 +425,9 @@ const Index = () => {
                     </span>{" "}
                     juntos
                   </h2>
-                  <p className="text-white/80 mb-10 text-lg">
-                    Dúvidas sobre nossos exames ou interesse em parcerias? Nossa equipe técnica está à
-                    disposição.
+                  <p className="text-white/80 mb-10 text-lg whitespace-pre-line">
+                    Dúvidas sobre nossos exames ou interesse em parcerias?{"\n"}
+                    Nossa equipe técnica está à disposição.
                   </p>
                   <div className="space-y-5">
                     <div className="flex items-center gap-4">
