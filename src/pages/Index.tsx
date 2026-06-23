@@ -79,8 +79,8 @@ const Index = () => {
   ];
 
   const stats = [
-    { value: "99.9%", label: "Precisão analítica" },
-    { value: "24h", label: "Suporte clínico" },
+    { value: "99.0%", label: "Precisão analítica" },
+    { value: "24 H", label: "Suporte analítico" },
   ];
 
   const differentials = [
