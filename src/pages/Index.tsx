@@ -199,13 +199,13 @@ const Index = () => {
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-2 gap-6 mt-16 max-w-md">
+              <div className="grid grid-cols-2 gap-8 mt-16 max-w-md items-start">
                 {stats.map((s) => (
-                  <div key={s.label} className="border-l-2 border-teal-deep/40 pl-4">
-                    <div className="text-3xl md:text-4xl font-extrabold text-gradient">
+                  <div key={s.label} className="border-l-2 border-teal-deep/40 pl-4 flex flex-col justify-start h-full">
+                    <div className="text-3xl md:text-4xl font-extrabold text-gradient leading-none">
                       {s.value}
                     </div>
-                    <div className="text-sm text-navy/65 mt-1 font-medium">{s.label}</div>
+                    <div className="text-sm text-navy/65 mt-2 font-medium leading-tight">{s.label}</div>
                   </div>
                 ))}
               </div>
