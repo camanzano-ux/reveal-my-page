@@ -80,8 +80,6 @@ const Index = () => {
 
   const stats = [
     { value: "99.9%", label: "Precisão analítica" },
-    { value: "\n", label: "\n" },
-    { value: "\n", label: "\n" },
     { value: "24h", label: "Suporte clínico" },
   ];
 
@@ -201,7 +199,7 @@ const Index = () => {
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+              <div className="grid grid-cols-2 gap-6 mt-16 max-w-md">
                 {stats.map((s) => (
                   <div key={s.label} className="border-l-2 border-teal-deep/40 pl-4">
                     <div className="text-3xl md:text-4xl font-extrabold text-gradient">
