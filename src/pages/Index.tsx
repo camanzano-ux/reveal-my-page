@@ -54,7 +54,7 @@ const Index = () => {
     { id: "testes", label: "Testes PGTseq" },
     { id: "ciencia", label: "Ciência" },
     { id: "pacientes", label: "Pacientes" },
-    { id: "contato", label: "Contato" },
+    { id: "contato", label: "\n" },
   ];
 
   const tests = [
@@ -80,8 +80,8 @@ const Index = () => {
 
   const stats = [
     { value: "99.9%", label: "Precisão analítica" },
-    { value: "+50k", label: "Embriões analiados" },
-    { value: "200+", label: "Clínicas parceiras" },
+    { value: "\n", label: "\n" },
+    { value: "\n", label: "\n" },
     { value: "24h", label: "Suporte clínico" },
   ];
 
@@ -122,7 +122,7 @@ const Index = () => {
               onClick={(e) => handleNav(e, "contato")}
               className="bg-gradient-brand-deep text-primary-foreground px-5 py-2.5 rounded-full font-semibold text-sm shadow-soft hover:shadow-glow hover:scale-105 transition-base"
             >
-              Agendar Aconselhamento
+              Contato
             </a>
           </nav>
           <button
@@ -174,14 +174,14 @@ const Index = () => {
             <div className="max-w-3xl animate-fade-up">
               <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-md border border-white/60 rounded-full px-4 py-2 mb-6 shadow-soft">
                 <Sparkles className="h-4 w-4 text-teal-deep" />
-                <span className="text-sm font-semibold text-navy">Juno Genetics Available in LATAM by TheraSeq</span>
+                <span className="text-sm font-semibold text-navy">Juno Genetics available in LATAM by TheraSeq</span>
               </div>
               <h1 className="text-5xl md:text-7xl font-extrabold leading-[1.02] mb-6 text-navy">
                 Avançando a ciência de{" "}
                 <span className="text-gradient">formar famílias</span>
               </h1>
               <p className="text-lg md:text-xl text-navy/75 mb-10 max-w-2xl leading-relaxed whitespace-pre-line">
-                A TheraSeq é um laboratório de análises genéticas dedicado a&nbsp; clínicas e laboratórios de saúde reprodutiva e seus pacientes — com tecnologia de sequenciamento de última geração (NGS) e o mais alto padrão da América Latina, além de utilizar uma das únicas plataformas{"\n"}com validação analítica e clínica (Juno Genetics).
+                A TheraSeq é um laboratório de análises genéticas dedicado a&nbsp; clínicas e laboratórios de saúde reprodutiva e seus pacientes — com tecnologia de sequenciamento de última geração (NGS) e o mais alto padrão da América Latina, além de utilizar uma das únicas plataformas{"\n"}com validação analítica e clínica a nível mundial (Juno Genetics).
               </p>
               <div className="flex flex-wrap gap-4">
                 <a
