@@ -48,7 +48,7 @@ export default function Index(): JSX.Element {
             {navLinks.map((l) => (
               <a
                 key={l.id}
-                href={`#${l.id}`}
+                href={#${l.id}}
                 className="text-sm font-medium text-slate-700 hover:text-slate-900"
               >
                 {l.label}
