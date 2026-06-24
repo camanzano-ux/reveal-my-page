@@ -19,7 +19,6 @@ import {
 import logoV1 from "@/assets/logo-v1.png";
 import logoV2 from "@/assets/logo-v2.png";
 import heroDna from "@/assets/hero-banner.jpg";
-import theraGif from "@/assets/thera.gif";
 import familyImg from "@/assets/family.jpg";
 
 const Index = () => {
@@ -247,7 +246,7 @@ const Index = () => {
             <div className="relative">
               <div className="absolute -inset-6 bg-gradient-brand opacity-20 blur-3xl rounded-full animate-pulse-glow" />
               <img
-                src={theraGif.url}
+                src="/thera.gif"
                 alt="Laboratório TheraSeq"
                 className="relative rounded-3xl shadow-glow w-full"
                 loading="lazy"
