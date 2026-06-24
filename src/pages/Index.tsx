@@ -528,7 +528,7 @@ const Index = () => {
             <div className="md:col-span-2">
               <img src={logoV2} alt="TheraSeq" className="h-16 w-auto mb-4" />
               <p className="text-sm leading-relaxed max-w-md">
-                Laboratório de análises genéticas do Mater Group. Avançando a ciência da vida com
+                Laboratório de análises genéticas. Avançando a ciência da vida com
                 tecnologia NGS de última geração.
               </p>
             </div>
@@ -550,7 +550,7 @@ const Index = () => {
             </div>
           </div>
           <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/60">
-            <p>© 2026 TheraSeq — Divisão de Genética Mater Group. Todos os direitos reservados.</p>
+            <p>© 2026 TheraSeq — Divisão de Genética. Todos os direitos reservados.</p>
             <div className="flex gap-6">
               <a href="#" className="hover:text-teal transition-base">Privacidade</a>
               <a href="#" className="hover:text-teal transition-base">Termos de Uso</a>
