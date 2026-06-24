@@ -273,7 +273,7 @@ const Index = () => {
                   <div
                     key={t.tag}
                     className="group relative bg-card rounded-3xl p-8 shadow-card hover:shadow-glow transition-base hover:-translate-y-2 border border-border/50 overflow-hidden"
-                    style={{ animationDelay: \${i * 0.1}s` }}`
+                    style={{ animationDelay:\${i * 0.1}s`}}`
                   >
                     <div className="absolute -top-12 -right-12 w-40 h-40 bg-gradient-brand rounded-full opacity-10 group-hover:opacity-20 transition-base" />
                     <div className="relative">
