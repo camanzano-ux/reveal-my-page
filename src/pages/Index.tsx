@@ -528,8 +528,7 @@ const Index = () => {
             <div className="md:col-span-2">
               <img src={logoV2} alt="TheraSeq" className="h-16 w-auto mb-4" />
               <p className="text-sm leading-relaxed max-w-md">
-                Laboratório de análises genéticas. Avançando a ciência da vida com
-                tecnologia NGS de última geração.
+                Laboratório de análises genéticas. Avançando a ciência da vida com tecnologia NGS de última geração.
               </p>
             </div>
             <div>
