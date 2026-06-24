@@ -98,7 +98,7 @@ const Index = () => {
             {navLinks.map((l) => (
               <a
                 key={l.id}
-                href=#${l.id}}
+                href={`#${l.id}`}
                 onClick={(e) => handleNav(e, l.id)}
                 className="text-sm font-semibold text-navy/80 hover:text-gradient transition-base"
               >
