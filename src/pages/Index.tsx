@@ -549,7 +549,7 @@ const Index = () => {
             </div>
           </div>
           <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/60">
-            <p>© 2026 TheraSeq — Divisão de Genética. Todos os direitos reservados.</p>
+            <p>© 2026 TheraSeq — Divisão de Genética Mater Group. Todos os direitos reservados.</p>
             <div className="flex gap-6">
               <a href="#" className="hover:text-teal transition-base">Privacidade</a>
               <a href="#" className="hover:text-teal transition-base">Termos de Uso</a>
