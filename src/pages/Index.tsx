@@ -19,7 +19,7 @@ import {
 import logoV1 from "@/assets/logo-v1.png";
 import logoV2 from "@/assets/logo-v2.png";
 import heroDna from "@/assets/hero-banner.jpg";
-import theraGif from "@/assets/Thera.gif.asset.json";
+import theraGif from "@/assets/thera.gif";
 import familyImg from "@/assets/family.jpg";
 
 const Index = () => {
