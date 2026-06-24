@@ -8,12 +8,15 @@ import {
   Award,
   Microscope,
   HeartPulse,
-  Baby,
   ShieldCheck,
   ArrowRight,
   CheckCircle2,
   Menu,
   X,
+  Mail,
+  Phone,
+  MapPin,
+  Sparkles
 } from "lucide-react";
 
 const navLinks = [
@@ -26,204 +29,109 @@ const navLinks = [
 
 const exames = [
   {
-    id: "pgtseq",
-    title: "PGTseq",
-    subtitle: "Sequenciamento de DNA embrionário",
-    description:
-      "Tecnologia de ponta para análise genética pré-implantacional, aumentando as chances de sucesso na reprodução assistida.",
-    icon: <Dna className="h-8 w-8 text-teal-600" />,
-    features: [
-      "Detecção de aneuploidias",
-      "Análise de rearranjos cromossômicos",
-      "Screening de doenças monogênicas",
-      "Maior taxa de implantação saudável",
-    ],
-  },
-  {
     id: "pgt-a",
     title: "PGT-A",
     subtitle: "Screening de aneuploidia",
-    description:
-      "Identifica alterações no número de cromossomos nos embriões, reduzindo o risco de abortamento e síndromes cromossômicas.",
-    icon: <Microscope className="h-8 w-8 text-teal-600" />,
-    features: [
-      "Aumento da taxa de gestação",
-      "Redução de abortamentos",
-      "Melhor seleção embrionária",
-      "Resultado confiável em 24h",
-    ],
+    description: "Identifica alterações no número de cromossomos nos embriões, reduzindo o risco de abortamento.",
+    icon: <Dna className="h-8 w-8 text-teal-600" />,
   },
   {
     id: "pgt-m",
     title: "PGT-M",
     subtitle: "Doenças monogênicas",
-    description:
-      "Diagnóstico genético para casais portadores de doenças hereditárias, assegurando embriões livres de condições graves.",
+    description: "Diagnóstico genético para casais portadores de doenças hereditárias.",
     icon: <HeartPulse className="h-8 w-8 text-teal-600" />,
-    features: [
-      "Triagem de doenças raras",
-      "Compatibilidade HLA",
-      "Testes personalizados",
-      "Acompanhamento especializado",
-    ],
   },
   {
     id: "pgt-sr",
     title: "PGT-SR",
     subtitle: "Rearranjos estruturais",
-    description:
-      "Análise de translocações e rearranjos cromossômicos em casais com histórico de infertilidade ou perdas gestacionais.",
+    description: "Análise de translocações e rearranjos cromossômicos em casais com histórico de infertilidade.",
     icon: <ShieldCheck className="h-8 w-8 text-teal-600" />,
-    features: [
-      "Detecção de translocações",
-      "Análise de inversões",
-      "Redução de riscos de perda",
-      "Relatório detalhado",
-    ],
-  },
-];
-
-const stats = [
-  { value: "99%", label: "Precisão nas análises" },
-  { value: "10k+", label: "Testes realizados" },
-  { value: "50+", label: "Centros parceiros" },
-  { value: "24h", label: "Resultado prioritário" },
-];
-
-const scienceSteps = [
-  {
-    title: "Coleta",
-    description: "Biópsia embrionária segura e minimamente invasiva em laboratório parceiro.",
-    icon: <FlaskConical className="h-6 w-6 text-white" />,
-  },
-  {
-    title: "Sequenciamento",
-    description: "Leitura completa do DNA com plataformas NGS de última geração.",
-    icon: <Dna className="h-6 w-6 text-white" />,
-  },
-  {
-    title: "Análise",
-    description: "Interpretação por bioinformata e equipe médica especializada.",
-    icon: <Microscope className="h-6 w-6 text-white" />,
-  },
-  {
-    title: "Relatório",
-    description: "Laudo claro e orientado para auxiliar na decisão clínica.",
-    icon: <Award className="h-6 w-6 text-white" />,
-  },
+  }
 ];
 
 export default function Index() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
-  const observerRef = useRef<IntersectionObserver | null>(null);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisibleSections((prev) => new Set(prev).add(entry.target.id));
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-
-    const sections = document.querySelectorAll("section[data-animate]");
-    sections.forEach((section) => observerRef.current?.observe(section));
-
-    return () => observerRef.current?.disconnect();
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     setMobileOpen(false);
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
-      {/* Navbar */}
-      <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/90 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-          <a href="#" className="flex items-center gap-2" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
-            <img src="/logo-v1.png" alt="TheraSeq" className="h-10 w-auto object-contain" />
-          </a>
-
+    <div className="min-h-screen bg-white text-slate-900">
+      <header className={`fixed top-0 z-50 w-full transition-all ${scrolled ? "bg-white/90 backdrop-blur shadow-sm py-2" : "bg-transparent py-4"}`}>
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
+          <img src="/logo-v1.png" alt="TheraSeq" className="h-10 w-auto" />
           <nav className="hidden items-center gap-8 md:flex">
             {navLinks.map((l) => (
-              <a
-                key={l.id}
-                href={`#${l.id}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollTo(l.id);
-                }}
-                className="text-sm font-medium text-slate-600 transition-colors hover:text-teal-600"
-              >
+              <a key={l.id} href={`#${l.id}`} onClick={(e) => { e.preventDefault(); scrollTo(l.id); }} className="text-sm font-medium hover:text-teal-600 transition-colors">
                 {l.label}
               </a>
             ))}
-            <Button
-              onClick={() => scrollTo("contato")}
-              className="bg-teal-600 text-white hover:bg-teal-700"
-            >
-              Solicitar exame
-            </Button>
+            <Button onClick={() => scrollTo("contato")} className="bg-teal-600 hover:bg-teal-700">Contato</Button>
           </nav>
-
-          <button
-            className="rounded-md p-2 text-slate-600 hover:bg-slate-100 md:hidden"
-            onClick={() => setMobileOpen((o) => !o)}
-            aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
-          >
-            {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          <button className="md:hidden" onClick={() => setMobileOpen(!mobileOpen)}>
+            {mobileOpen ? <X /> : <Menu />}
           </button>
         </div>
-
-        {mobileOpen && (
-          <div className="border-t border-slate-200 bg-white px-4 py-4 md:hidden">
-            <div className="flex flex-col gap-4">
-              {navLinks.map((l) => (
-                <a
-                  key={l.id}
-                  href={`#${l.id}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollTo(l.id);
-                  }}
-                  className="text-base font-medium text-slate-600 hover:text-teal-600"
-                >
-                  {l.label}
-                </a>
-              ))}
-              <Button
-                onClick={() => scrollTo("contato")}
-                className="w-full bg-teal-600 text-white hover:bg-teal-700"
-              >
-                Solicitar exame
-              </Button>
+      </header>      <main>
+        <section id="hero" className="relative pt-32 pb-20 overflow-hidden">
+          <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 rounded-full bg-teal-50 px-3 py-1 text-sm font-medium text-teal-700">
+                <Sparkles className="h-4 w-4" /> Juno Genetics by TheraSeq
+              </div>
+              <h1 className="text-5xl font-extrabold tracking-tight text-slate-900 lg:text-6xl">
+                Avançando a ciência de <span className="text-teal-600">formar famílias</span>
+              </h1>
+              <p className="text-lg text-slate-600 max-w-lg">
+                Tecnologia NGS de última geração com o mais alto padrão da América Latina para análises genéticas reprodutivas.
+              </p>
+              <div className="flex gap-4">
+                <Button size="lg" onClick={() => scrollTo("exames")} className="bg-teal-600 hover:bg-teal-700">Ver Exames</Button>
+                <Button size="lg" variant="outline" onClick={() => scrollTo("sobre")}>Saiba Mais</Button>
+              </div>
+            </div>
+            <div className="relative">
+              <img src="/thera.gif" alt="Animação TheraSeq" className="rounded-2xl shadow-2xl w-full" />
             </div>
           </div>
-        )}
-      </header>
+        </section>
 
-      {/* Hero */}
-      <section
-        id="hero"
-        data-animate
-        className={`relative overflow-hidden bg-white transition-all duration-1000 ease-out ${
-          visibleSections.has("hero") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}
-      >
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-24">
-          <div className="flex flex-col gap-6">
-            <div className="inline-flex w-fit items-center gap-2 rounded-full bg-teal-50 px-3 py-1 text-sm font-medium text-teal-700">
-              <Dna className="h-4 w-4" />
-              Genética reprodutiva de precisão
+        <section id="exames" className="py-20 bg-slate-50">
+          <div className="mx-auto max-w-7xl px-6">
+            <h2 className="text-3xl font-bold text-center mb-12">Nossos Testes PGTseq</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {exames.map((ex) => (
+                <Card key={ex.id} className="border-none shadow-md hover:shadow-xl transition-shadow">
+                  <CardContent className="p-8 space-y-4">
+                    <div className="p-3 bg-teal-50 w-fit rounded-xl">{ex.icon}</div>
+                    <h3 className="text-xl font-bold">{ex.title}</h3>
+                    <p className="text-slate-600 text-sm">{ex.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
-            <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-              TheraSeq: ciência a favor da{
+          </div>
+        </section>
+      </main>
+
+      <footer className="bg-slate-900 text-white py-12">
+        <div className="mx-auto max-w-7xl px-6 text-center">
+          <img src="/logo-v2.png" alt="TheraSeq" className="h-12 w-auto mx-auto mb-6 opacity-80" />
+          <p className="text-slate-400 text-sm">© 2026 TheraSeq — Tecnologia a favor da vida.</p>
+        </div>
+      </footer>
+    </div>
+  );
+}
