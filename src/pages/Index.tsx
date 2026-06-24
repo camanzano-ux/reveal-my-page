@@ -141,7 +141,7 @@ export default function Index(): JSX.Element {
           <div className="grid items-center gap-10 lg:grid-cols-2">
             <div className="order-2 lg:order-1">
               <img
-                src="/thera.gif"
+                src="/Thera.gif"
                 alt="Animação ilustrando o processo terapêutico"
                 className="h-auto w-full rounded-2xl shadow-lg"
                 width={600}
