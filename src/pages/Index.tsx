@@ -127,7 +127,7 @@ const Index = () => {
               {navLinks.map((l) => (
                 <li key={l.id}>
                   <a
-                    href=#${l.id}}
+                    href={`#${l.id}`}
                     onClick={(e) => handleNav(e, l.id)}
                     className="block py-2 font-semibold"
                   >
