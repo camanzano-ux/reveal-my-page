@@ -28,7 +28,7 @@ import logoV1 from "@/assets/logo-v1.png";
 import logoV2 from "@/assets/logo-v2.png";
 import heroDna from "@/assets/hero-banner.jpg";
 import familyImg from "@/assets/family.jpg";
-import theraGif from "@/assets/Thera.gif";
+import theraGif from "@/assets/thera.gif";
 
 type Lang = "pt" | "es" | "en";
 
