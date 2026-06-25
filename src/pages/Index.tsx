@@ -530,7 +530,7 @@ const Index = () => {
             <div className="relative">
               <div className="absolute -inset-6 bg-gradient-brand opacity-20 blur-3xl rounded-full animate-pulse-glow" />
               <img
-                src="/thera.gif"
+                src={theraGif}
                 alt={t.aboutImgAlt}
                 className="relative rounded-3xl shadow-glow w-full"
                 loading="lazy"
