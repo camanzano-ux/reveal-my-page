@@ -44,7 +44,7 @@ const T = {
     heroBadge: "Juno Genetics disponível na América Latina por TheraSeq",
     heroTitle1: "Avançando a ciência de ",
     heroTitle2: "formar famílias",
-    heroDesc: "A TheraSeq é um laboratório de análises genéticas dedicado a clínicas e laboratórios de saúde reprodutiva e seus pacientes — com tecnologia de sequenciamento de última geração (NGS) e o mais alto padrão da América Latina, além de utilizar uma das únicas plataformas{\\n}com validação analítica e clínica a nível mundial (Juno Genetics).",
+    heroDesc: "A TheraSeq é um laboratório de análises genéticas dedicado a clínicas e laboratórios de saúde reprodutiva e seus pacientes — com tecnologia de sequenciamento de última geração (NGS) e o mais alto padrão da América Latina, além de utilizar uma das únicas plataformas com validação analítica e clínica a nível mundial (Juno Genetics).",
     heroCta1: "Conheça os exames PGTseq",
     heroCta2: "Nossa tecnologia",
     statAccuracy: "Precisão analítica",
