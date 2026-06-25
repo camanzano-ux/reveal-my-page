@@ -52,7 +52,7 @@ const T = {
     aboutKicker: "Sobre Nós",
     aboutTitle1: "Progresso na ",
     aboutTitle2: "ciência reprodutiva",
-    aboutP1: "Thera: Arquétipo da cura, cuidado e proteção.{\\n}Seq: Linguagem do sequenciamento e tecnologia{\\n\\n}TheraSeq é a ponte entre o invisível e o possível.{\\n}É onde o rigor científico convive com a sensibilidade de quem entende que cada embrião carrega não apenas cromossomos, mas expectativas, histórias e futuros inteiros.",
+    aboutP1: "Thera: Arquétipo da cura, cuidado e proteção.{\\n}Seq: Linguagem do sequenciamento e tecnologia.{\\n\\n}TheraSeq é a ponte entre o invisível e o possível.{\\n\\n}É onde o rigor científico convive com a sensibilidade de quem entende que cada embrião carrega não apenas cromossomos, mas expectativas, histórias e futuros inteiros.",
     aboutP2: "Mais do que um nome, TheraSeq é um propósito: cuidado e ciência, coração e código, entrelaçados em um caminho preciso do embrião à vida.",
     aboutBullets: [
       "Tecnologia NGS proprietária",
